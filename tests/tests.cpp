@@ -655,10 +655,10 @@ void testRemove() {
     auto storage = make_storage("test_remove.sqlite",
                                 make_table("objects",
                                            make_column("id",
-                                                       &Object::id,
-                                                       primary_key()),
+                                                       &Object::id),
                                            make_column("name",
-                                                       &Object::name)));
+                                                       &Object::name),
+					   primary_key(&Object::id)));
     storage.sync_schema();
     storage.remove_all<Object>();
 
